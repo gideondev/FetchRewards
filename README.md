@@ -14,8 +14,12 @@ This app is built with MVVM architecture.
 The entire configuration is glued together by **Koin Dependency Injection**.
 
 ## Dependencies Used
-* Recycler View
-* Retrofit
-* GSON
-* Koin
-* Android Architecture Components
+* Recycler View (for displaying large lists)
+* Retrofit (for Network calls)
+* GSON (for JSON Serialization)
+* Koin (for Dependency Injection)
+* Android Architecture Components (for ViewModel and LiveData)
+
+## Data Binding
+Did not use data binding in this application.
+However, observing the livedata and updating UI can be done by data binding as well.
