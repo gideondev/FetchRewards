@@ -14,6 +14,7 @@ import java.util.*
 class DataScreenViewModel(private val dataRepository: DataRepository) : ViewModel() {
     val dataListLiveData: MutableLiveData<MutableList<DataItem>> = MutableLiveData()
     val dataLoadingLiveData: MutableLiveData<Boolean> = MutableLiveData(false)
+    val dataLoadingFailedLiveData: MutableLiveData<Boolean> = MutableLiveData(false)
 
     init {
         fetchData()
@@ -27,11 +28,13 @@ class DataScreenViewModel(private val dataRepository: DataRepository) : ViewMode
                     val processedItems = processItems(fetchedData.data)
 
                     dataLoadingLiveData.postValue(false)
+                    dataLoadingFailedLiveData.postValue(false)
                     dataListLiveData.postValue(processedItems.toMutableList())
                 }
                 is Resource.Error -> {
                     // For Error handling.
                     dataLoadingLiveData.postValue(false)
+                    dataLoadingFailedLiveData.postValue(true)
                 }
             }
         }

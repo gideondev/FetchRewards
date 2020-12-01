@@ -1,14 +1,16 @@
 package com.gideon.fetchrewards.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gideon.fetchrewards.R
 import org.koin.android.viewmodel.ext.android.viewModel
+
 
 class DataScreenActivity : AppCompatActivity() {
     private val viewModel: DataScreenViewModel by viewModel()
@@ -36,12 +38,28 @@ class DataScreenActivity : AppCompatActivity() {
         })
 
         viewModel.dataLoadingLiveData.observe(this, {
-            val dataItemsLoadingIndicator = findViewById<ProgressBar>(R.id.data_items_loading_indicator)
-            if(it) {
+            val dataItemsLoadingIndicator =
+                findViewById<ProgressBar>(R.id.data_items_loading_indicator)
+            if (it) {
                 dataItemsLoadingIndicator.visibility = View.VISIBLE
             } else {
                 dataItemsLoadingIndicator.visibility = View.GONE
             }
         })
+
+        viewModel.dataLoadingFailedLiveData.observe(this, {
+            if (it) {
+                showDataLoadingFailedErrorDialog()
+            }
+        })
+    }
+
+    private fun showDataLoadingFailedErrorDialog() {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.error))
+            .setMessage(getString(R.string.data_retrieval_error))
+            .setPositiveButton(getString(R.string.yes), null)
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .show()
     }
 }

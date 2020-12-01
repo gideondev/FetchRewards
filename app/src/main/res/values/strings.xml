@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">FetchRewards</string>
     <string name="list_id">List Id</string>
+    <string name="error">Error</string>
+    <string name="data_retrieval_error">Something went wrong. Data retrieval failed.</string>
+    <string name="yes">Yes</string>
 </resources>
