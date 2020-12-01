@@ -8,6 +8,8 @@ import com.gideon.fetchrewards.domain.models.DataItem
 import com.gideon.fetchrewards.domain.models.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.Comparator
 
 class DataScreenViewModel(private val dataRepository: DataRepository) : ViewModel() {
     val dataListLiveData: MutableLiveData<MutableList<DataItem>> = MutableLiveData()
@@ -20,13 +22,31 @@ class DataScreenViewModel(private val dataRepository: DataRepository) : ViewMode
         viewModelScope.launch(Dispatchers.IO) {
             when (val fetchedData = dataRepository.getData()) {
                 is Resource.Success -> {
-                    dataListLiveData.postValue(fetchedData.data.toMutableList())
+                    val processedItems = processItems(fetchedData.data)
+                    dataListLiveData.postValue(processedItems?.toMutableList())
                 }
                 is Resource.Error -> {
                     // For Error handling.
                 }
             }
         }
+    }
+
+    private fun processItems(items: List<DataItem>): List<DataItem> {
+        val itemsWithoutBlanks = removeItemsWithEmptyNames(items)
+        sortItems(itemsWithoutBlanks)
+        return itemsWithoutBlanks
+    }
+
+    private fun removeItemsWithEmptyNames(items: List<DataItem>): List<DataItem> {
+        return items.filter {
+            !it.name.isNullOrEmpty()
+        }
+    }
+
+    private fun sortItems(dataToSort: List<DataItem>): List<DataItem> {
+        Collections.sort(dataToSort, ListCustomComparator())
+        return dataToSort
     }
 }
 
