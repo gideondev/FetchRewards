@@ -1,9 +1,12 @@
 package com.gideon.fetchrewards.ui
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.gideon.fetchrewards.R
 import com.gideon.fetchrewards.domain.models.DataItem
 
 class DataListAdapter(private val context: Context) :
@@ -17,11 +20,20 @@ class DataListAdapter(private val context: Context) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataListViewHolder {
-        TODO("Not yet implemented")
+        return DataListViewHolder(
+            LayoutInflater.from(context).inflate(
+                R.layout.data_list_item,
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: DataListViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val dataItem: DataItem = dataList[position]
+        holder.dataListItemId.text = dataItem.id.toString()
+        holder.dataListItemListId.text = dataItem.listId.toString()
+        holder.dataListItemName.text = dataItem.name
     }
 
     override fun getItemCount(): Int {
@@ -29,5 +41,8 @@ class DataListAdapter(private val context: Context) :
     }
 
     inner class DataListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var dataListItemListId : TextView = view.findViewById(R.id.data_list_item_list_id)
+        var dataListItemId: TextView = view.findViewById(R.id.data_list_item_id)
+        var dataListItemName: TextView = view.findViewById(R.id.data_list_item_name)
     }
 }
