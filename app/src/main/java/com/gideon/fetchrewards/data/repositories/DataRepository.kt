@@ -4,5 +4,5 @@ import com.gideon.fetchrewards.domain.models.DataItem
 import com.gideon.fetchrewards.domain.models.Resource
 
 interface DataRepository {
-    suspend fun getData(): Resource<List<DataItem>>
+    suspend fun getAllData(): Resource<List<DataItem>>
 }

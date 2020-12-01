@@ -19,7 +19,7 @@ class DataScreenViewModel(private val dataRepository: DataRepository) : ViewMode
 
     private fun fetchData() {
         viewModelScope.launch(Dispatchers.IO) {
-            when (val fetchedData = dataRepository.getData()) {
+            when (val fetchedData = dataRepository.getAllData()) {
                 is Resource.Success -> {
                     val processedItems = processItems(fetchedData.data)
                     dataListLiveData.postValue(processedItems.toMutableList())
