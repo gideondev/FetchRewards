@@ -1,7 +1,8 @@
-package com.gideon.fetchrewards
+package com.gideon.fetchrewards.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gideon.fetchrewards.R
 
 class DataScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
