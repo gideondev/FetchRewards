@@ -12,4 +12,5 @@ val appModule = listOf(
             androidApplication() as FetchRewardsApplication
         }
     },
+    networkModule
 )
