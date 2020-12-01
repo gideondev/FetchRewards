@@ -1,6 +1,6 @@
 package com.gideon.fetchrewards.data.sources.remote.api
 
-import com.gideon.fetchrewards.domain.entities.DataItem
+import com.gideon.fetchrewards.data.sources.remote.entities.DataItemRemoteEntity
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -9,5 +9,5 @@ import retrofit2.http.GET
  */
 interface FetchRewardsAPI {
     @GET("hiring.json")
-    suspend fun getAllData(): Response<List<DataItem>>
+    suspend fun getAllData(): Response<List<DataItemRemoteEntity>>
 }
