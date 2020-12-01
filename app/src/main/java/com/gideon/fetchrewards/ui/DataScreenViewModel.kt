@@ -51,7 +51,7 @@ class DataScreenViewModel(private val dataRepository: DataRepository) : ViewMode
 }
 
 
-// A comparator to compare first names of Name
+// A comparator to compare data items according to business logic.
 class ListCustomComparator : Comparator<DataItem> {
     override fun compare(item1: DataItem, item2: DataItem): Int {
         return if (item1.listId == item2.listId) {
