@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gideon.fetchrewards">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".app.FetchRewardsApplication"
         android:allowBackup="true"
