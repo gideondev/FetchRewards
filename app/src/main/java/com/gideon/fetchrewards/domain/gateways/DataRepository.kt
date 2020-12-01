@@ -1,4 +1,4 @@
-package com.gideon.fetchrewards.data.repositories
+package com.gideon.fetchrewards.domain.gateways
 
 import com.gideon.fetchrewards.domain.models.DataItem
 import com.gideon.fetchrewards.domain.models.Resource
