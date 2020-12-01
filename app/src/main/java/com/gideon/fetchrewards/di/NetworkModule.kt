@@ -15,14 +15,9 @@ val networkModule = module {
         provideGson()
     }
 
-    // OkHttp Logger
-    single {
-        provideHTTPLoggingInterceptor()
-    }
-
     // OkHttp client
     single {
-        provideOkHttpClient(httpLoggingInterceptor = get())
+        provideOkHttpClient()
     }
 
     // Retrofit
@@ -43,14 +38,8 @@ private fun provideGson(): Gson {
     return Gson()
 }
 
-private fun provideHTTPLoggingInterceptor(): HttpLoggingInterceptor {
-    return HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
-    }
-}
-
-private fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
-    return OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build()
+private fun provideOkHttpClient(): OkHttpClient {
+    return OkHttpClient.Builder().build()
 }
 
 private fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
