@@ -9,7 +9,6 @@ import com.gideon.fetchrewards.domain.models.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.*
-import kotlin.Comparator
 
 class DataScreenViewModel(private val dataRepository: DataRepository) : ViewModel() {
     val dataListLiveData: MutableLiveData<MutableList<DataItem>> = MutableLiveData()
@@ -23,7 +22,7 @@ class DataScreenViewModel(private val dataRepository: DataRepository) : ViewMode
             when (val fetchedData = dataRepository.getData()) {
                 is Resource.Success -> {
                     val processedItems = processItems(fetchedData.data)
-                    dataListLiveData.postValue(processedItems?.toMutableList())
+                    dataListLiveData.postValue(processedItems.toMutableList())
                 }
                 is Resource.Error -> {
                     // For Error handling.
