@@ -4,9 +4,18 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.gideon.fetchrewards.domain.models.DataItem
 
 class DataListAdapter(private val context: Context) :
     RecyclerView.Adapter<DataListAdapter.DataListViewHolder>() {
+
+    private var dataList = mutableListOf<DataItem>()
+
+    fun updateData(dataList: MutableList<DataItem>) {
+        this.dataList = dataList
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataListViewHolder {
         TODO("Not yet implemented")
     }
@@ -16,9 +25,8 @@ class DataListAdapter(private val context: Context) :
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return dataList.size
     }
-
 
     inner class DataListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     }
