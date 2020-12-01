@@ -1,5 +1,8 @@
 package com.gideon.fetchrewards.domain.models
 
+/**
+ * All network/database data will be wrapped in this class.
+ */
 sealed class Resource<out T : Any> {
     data class Success<out T : Any>(val data: T) : Resource<T>()
     data class Error(val throwable: Throwable) : Resource<Nothing>()

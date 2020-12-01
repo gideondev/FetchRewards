@@ -1,7 +1,7 @@
 package com.gideon.fetchrewards.app
 
 import android.app.Application
-import com.gideon.fetchrewards.di.appModule
+import com.gideon.fetchrewards.di.mainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -17,7 +17,7 @@ class FetchRewardsApplication: Application() {
             androidContext(this@FetchRewardsApplication)
 
             // declare modules
-            modules(appModule)
+            modules(mainModule)
         }
     }
 }
