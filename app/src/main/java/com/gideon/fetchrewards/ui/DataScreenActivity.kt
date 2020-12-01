@@ -12,5 +12,16 @@ class DataScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_screen)
         viewModel
+
+        setupDataList()
+        setupObservers()
+    }
+
+    private fun setupDataList() {
+        TODO("Not yet implemented")
+    }
+
+    private fun setupObservers() {
+        TODO("Not yet implemented")
     }
 }
