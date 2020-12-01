@@ -13,5 +13,6 @@ val appModule = listOf(
         }
     },
     networkModule,
-    remoteDataSourcesModule
+    remoteDataSourcesModule,
+    repositoriesModule
 )
