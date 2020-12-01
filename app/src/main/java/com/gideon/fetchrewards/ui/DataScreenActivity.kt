@@ -33,10 +33,12 @@ class DataScreenActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
+        // Observing data list
         viewModel.dataListLiveData.observe(this, {
             dataListAdapter.updateData(it)
         })
 
+        // Observing loading indicator
         viewModel.dataLoadingLiveData.observe(this, {
             val dataItemsLoadingIndicator =
                 findViewById<ProgressBar>(R.id.data_items_loading_indicator)
@@ -47,6 +49,7 @@ class DataScreenActivity : AppCompatActivity() {
             }
         })
 
+        // Observing errors.
         viewModel.dataLoadingFailedLiveData.observe(this, {
             if (it) {
                 showDataLoadingFailedErrorDialog()
