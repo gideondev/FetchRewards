@@ -1,6 +1,8 @@
 package com.gideon.fetchrewards.ui
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,8 +31,17 @@ class DataScreenActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        viewModel.dataListLiveData.observe(this, Observer {
+        viewModel.dataListLiveData.observe(this, {
             dataListAdapter.updateData(it)
+        })
+
+        viewModel.dataLoadingLiveData.observe(this, {
+            val dataItemsLoadingIndicator = findViewById<ProgressBar>(R.id.data_items_loading_indicator)
+            if(it) {
+                dataItemsLoadingIndicator.visibility = View.VISIBLE
+            } else {
+                dataItemsLoadingIndicator.visibility = View.GONE
+            }
         })
     }
 }
