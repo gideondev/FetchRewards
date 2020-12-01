@@ -1,4 +1,4 @@
-package com.gideon.fetchrewards.domain.models
+package com.gideon.fetchrewards.domain.entities
 
 import com.google.gson.annotations.SerializedName
 

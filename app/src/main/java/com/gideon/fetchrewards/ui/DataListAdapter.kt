@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.gideon.fetchrewards.R
-import com.gideon.fetchrewards.domain.models.DataItem
+import com.gideon.fetchrewards.domain.entities.DataItem
 
 class DataListAdapter(private val context: Context) :
     RecyclerView.Adapter<DataListAdapter.DataListViewHolder>() {

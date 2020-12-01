@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gideon.fetchrewards.domain.gateways.DataRepository
-import com.gideon.fetchrewards.domain.models.DataItem
-import com.gideon.fetchrewards.domain.models.Resource
+import com.gideon.fetchrewards.domain.entities.DataItem
+import com.gideon.fetchrewards.domain.entities.Resource
 import com.gideon.fetchrewards.domain.usecases.GetAllDataUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

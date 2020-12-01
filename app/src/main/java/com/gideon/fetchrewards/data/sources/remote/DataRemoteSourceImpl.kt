@@ -2,8 +2,8 @@ package com.gideon.fetchrewards.data.sources.remote
 
 import com.gideon.fetchrewards.data.sources.base.DataRemoteSource
 import com.gideon.fetchrewards.data.sources.remote.api.FetchRewardsAPI
-import com.gideon.fetchrewards.domain.models.DataItem
-import com.gideon.fetchrewards.domain.models.Resource
+import com.gideon.fetchrewards.domain.entities.DataItem
+import com.gideon.fetchrewards.domain.entities.Resource
 
 
 class DataRemoteSourceImpl(private val fetchRewardsAPI: FetchRewardsAPI): DataRemoteSource {

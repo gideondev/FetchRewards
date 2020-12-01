@@ -1,4 +1,4 @@
-package com.gideon.fetchrewards.domain.models
+package com.gideon.fetchrewards.domain.entities
 
 /**
  * All network/database data will be wrapped in this class.
